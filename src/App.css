@@ -32,9 +32,9 @@ h2 {
 .progress-bar {
   width: 100%;
   background: #ddd;
-  height: 12px; /* Увеличил высоту */
-  border-radius: 6px;
-  margin: 30px 0 10px 0; /* Увеличенный отступ сверху */
+  height: 8px;
+  border-radius: 5px;
+  margin-bottom: 40px;
 }
 
 .progress {
@@ -45,7 +45,8 @@ h2 {
 }
 
 .progress-bar p {
-  margin-bottom: 10px; /* Отступ для текста "Шаг" */
+  margin: 0 0 10px 0;
+  font-weight: bold;
 }
 
 .input-field {
