@@ -164,6 +164,89 @@ function App() {
         </div>
       )}
 
+      {step === 3 && (
+        <div className="question-box">
+          <h2>Сроки установки:</h2>
+          <p>Хотите начать уже скоро? Сообщите нам!</p>
+          <div className="options">
+            <label>
+              <input
+                type="radio"
+                name="installationTime"
+                value="В течение недели"
+                onChange={handleChange}
+              />
+              В течение недели
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="installationTime"
+                value="В течение месяца"
+                onChange={handleChange}
+              />
+              В течение месяца
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="installationTime"
+                value="Позже"
+                onChange={handleChange}
+              />
+              Позже
+            </label>
+          </div>
+          <button className="next-btn" onClick={nextStep}>Далее</button>
+        </div>
+      )}
+
+      {step === 4 && (
+        <div className="question-box">
+          <h2>Дизайн:</h2>
+          <p>Какой стиль отражает ваш вкус? Подберем вариант, который вдохновит!</p>
+          <div className="options">
+            <label>
+              <input
+                type="radio"
+                name="designPreference"
+                value="Классика"
+                onChange={handleChange}
+              />
+              Классика
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="designPreference"
+                value="Модерн"
+                onChange={handleChange}
+              />
+              Модерн
+            </label>
+          </div>
+          <button className="next-btn" onClick={nextStep}>Далее</button>
+        </div>
+      )}
+
+      {step === 5 && (
+        <div className="question-box">
+          <h2>Бюджет:</h2>
+          <p>Укажите ваш бюджет, и мы предложим оптимальные решения!</p>
+          <input
+            type="range"
+            name="budget"
+            min="300000"
+            max="10000000"
+            value={formData.budget}
+            step="100000"
+            onChange={handleBudgetChange}
+          />
+          <p>Текущий бюджет: {formData.budget} тенге</p>
+          <button className="next-btn" onClick={nextStep}>Далее</button>
+        </div>
+      )}
+
       {step === 6 && (
         <div className="question-box">
           <h2>Имя и телефон:</h2>
