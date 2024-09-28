@@ -1,10 +1,10 @@
 body {
-  background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Более насыщенный фон */
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
   font-family: 'Arial', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Центрирование по вертикали */
+  height: 100vh;
   margin: 0;
 }
 
@@ -13,9 +13,10 @@ body {
   margin: auto;
   background: #fff;
   border-radius: 15px;
-  padding: 40px; /* Увеличенные отступы внутри */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Более сильная тень */
+  padding: 40px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   text-align: center;
+  position: relative;
 }
 
 h1 {
@@ -26,60 +27,58 @@ h1 {
 h2 {
   font-size: 22px;
   color: #444;
-  margin-bottom: 15px; /* Дополнительный отступ */
+  margin-bottom: 15px;
 }
 
 .progress-bar {
   width: 100%;
   background: #ddd;
-  height: 4px; /* Минимальная высота линии */
+  height: 8px;
   border-radius: 5px;
-  margin-top: 20px; /* Дополнительный отступ сверху */
-  margin-bottom: 50px; /* Увеличенный отступ снизу */
+  margin-bottom: 40px;
 }
 
 .progress {
-  height: 12px; /* Увеличил высоту */
-  background: #76c7c0;
+  height: 12px;
   border-radius: 6px;
   transition: width 0.3s ease-in-out;
 }
 
-.progress-bar p {
-  margin: 0 0 20px 0; /* Увеличил отступ снизу */
-  font-size: 18px; /* Увеличил размер текста */
+.fade-in {
+  animation: fadeIn 1s ease-in;
 }
 
-.input-field {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 12px;
-  margin: 20px 0;
-  width: calc(100% - 24px);
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.next-btn, .submit-btn {
-  background: #76c7c0;
-  border: none;
-  border-radius: 6px;
-  color: #fff;
-  padding: 12px 30px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
-.next-btn:hover, .submit-btn:hover {
-  background: #4da89a;
-  transform: translateY(-2px);
-}
-
-.options label {
-  display: block;
-  margin: 12px 0;
-  cursor: pointer;
-}
-
-.welcome-message {
+.modal-content {
+  background: #fff;
   padding: 20px;
+  border-radius: 10px;
   text-align: center;
+  max-width: 500px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 24px;
 }
