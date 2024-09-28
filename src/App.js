@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function App() {
   const [step, setStep] = useState(0);
@@ -12,16 +12,7 @@ function App() {
     phone: '',
   });
 
-  // Приветственное сообщение перед началом квиза
   const [greeting, setGreeting] = useState(true);
-  const [userName, setUserName] = useState('');
-
-  useEffect(() => {
-    // Обновление имени пользователя при вводе
-    if (formData.name) {
-      setUserName(formData.name);
-    }
-  }, [formData.name]);
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
@@ -69,19 +60,18 @@ function App() {
 
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto' }}>
-      <h1>Опрос по корпусной мебели</h1>
+      <h1>Ответьте на 7 вопросов и получите предварительную стоимость и дизайн-проект в подарок!</h1>
 
       {/* Приветственное сообщение */}
       {greeting && (
-  <div>
-    <h2>Добро пожаловать!</h2>
-    <p>
-      Пройдите наш опрос, чтобы получить бесплатную консультацию, узнать предварительную стоимость и
-      получить **бесплатный дизайн кухни!**
-    </p>
-    <button onClick={() => setGreeting(false)}>Начать</button>
-  </div>
-)}
+        <div>
+          <h2>Добро пожаловать!</h2>
+          <p>
+            Пройдите короткий опрос, чтобы получить бесплатную консультацию и 3D-дизайн кухни — всё, что нужно для создания вашей идеальной мебели!
+          </p>
+          <button onClick={() => setGreeting(false)}>Начать</button>
+        </div>
+      )}
 
       {/* Прогресс-бар */}
       {!greeting && (
@@ -116,7 +106,8 @@ function App() {
 
       {step === 1 && (
         <div>
-          <h2>1. Какая форма кухни вас интересует?</h2>
+          <h2>Форма кухни:</h2>
+          <p>Выберите форму, которая лучше всего подходит вашему пространству.</p>
           <div>
             <label>
               <input
@@ -154,7 +145,8 @@ function App() {
 
       {step === 2 && (
         <div>
-          <h2>2. Какой тип мебели вас интересует?</h2>
+          <h2>Тип мебели:</h2>
+          <p>Какая мебель вам нужна? Мы учтем все ваши пожелания!</p>
           <div>
             <label>
               <input
@@ -182,7 +174,8 @@ function App() {
 
       {step === 3 && (
         <div>
-          <h2>3. Когда планируете установить кухню?</h2>
+          <h2>Сроки установки:</h2>
+          <p>Хотите начать уже скоро? Сообщите нам!</p>
           <div>
             <label>
               <input
@@ -220,7 +213,8 @@ function App() {
 
       {step === 4 && (
         <div>
-          <h2>4. Какой дизайн кухни вам больше нравится?</h2>
+          <h2>Дизайн:</h2>
+          <p>Какой стиль отражает ваш вкус? Подберем вариант, который вдохновит!</p>
           <div>
             <label>
               <input
@@ -241,16 +235,6 @@ function App() {
               />
               Модерн
             </label>
-            <br />
-            <label>
-              <input
-                type="radio"
-                name="designPreference"
-                value="Минимализм"
-                onChange={handleChange}
-              />
-              Минимализм
-            </label>
           </div>
           <button onClick={nextStep} style={{ marginTop: '20px' }}>Далее</button>
         </div>
@@ -258,7 +242,8 @@ function App() {
 
       {step === 5 && (
         <div>
-          <h2>5. На какой бюджет рассчитываете?</h2>
+          <h2>Бюджет:</h2>
+          <p>Укажите ваш бюджет, и мы предложим оптимальные решения!</p>
           <div>
             <input
               type="range"
@@ -277,7 +262,8 @@ function App() {
 
       {step === 6 && (
         <div>
-          <h2>6. Ваш номер телефона</h2>
+          <h2>Имя и телефон:</h2>
+          <p>Как к вам обращаться и куда можно позвонить?</p>
           <input
             type="tel"
             name="phone"
