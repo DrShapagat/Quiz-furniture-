@@ -1,71 +1,79 @@
 body {
-  background: linear-gradient(135deg, #f3f4f6, #ffffff);
+  background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Более насыщенный фон */
   font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Центрирование по вертикали */
+  margin: 0;
 }
 
 .quiz-container {
   max-width: 800px;
   margin: auto;
   background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  font-size: 24px;
-  color: #333;
+  border-radius: 15px;
+  padding: 40px; /* Увеличенные отступы внутри */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Более сильная тень */
   text-align: center;
 }
 
+h1 {
+  font-size: 26px;
+  color: #333;
+}
+
 h2 {
-  font-size: 20px;
+  font-size: 22px;
   color: #444;
+  margin-bottom: 15px; /* Дополнительный отступ */
 }
 
 .progress-bar {
   width: 100%;
   background: #ddd;
-  height: 10px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  height: 12px;
+  border-radius: 6px;
+  margin: 20px 0;
 }
 
 .progress {
-  height: 10px;
+  height: 12px;
   background: #76c7c0;
-  border-radius: 5px;
+  border-radius: 6px;
   transition: width 0.3s ease-in-out;
-}
-
-.question-box {
-  text-align: center;
 }
 
 .input-field {
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-  width: calc(100% - 22px);
+  padding: 12px;
+  margin: 20px 0;
+  width: calc(100% - 24px);
 }
 
 .next-btn, .submit-btn {
   background: #76c7c0;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 30px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .next-btn:hover, .submit-btn:hover {
   background: #4da89a;
+  transform: translateY(-2px);
 }
 
 .options label {
   display: block;
-  margin: 10px 0;
+  margin: 12px 0;
   cursor: pointer;
+}
+
+.welcome-message {
+  padding: 20px;
+  text-align: center;
 }
