@@ -32,9 +32,10 @@ h2 {
 .progress-bar {
   width: 100%;
   background: #ddd;
-  height: 6px;
+  height: 4px; /* Минимальная высота линии */
   border-radius: 5px;
-  margin-bottom: 40px;
+  margin-top: 20px; /* Дополнительный отступ сверху */
+  margin-bottom: 50px; /* Увеличенный отступ снизу */
 }
 
 .progress {
@@ -45,8 +46,8 @@ h2 {
 }
 
 .progress-bar p {
-  margin: 0 0 15px 0;
-  font-weight: bold;
+  margin: 0 0 20px 0; /* Увеличил отступ снизу */
+  font-size: 18px; /* Увеличил размер текста */
 }
 
 .input-field {
