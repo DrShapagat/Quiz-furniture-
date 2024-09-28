@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function App() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    furnitureType: '',
+    furnitureType: [],
     installationTime: '',
     designPreference: '',
     budget: '',
@@ -11,36 +11,95 @@ function App() {
     phone: '',
   });
 
-  // Обработка изменения поля
+  // Обработка выбора нескольких вариантов
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setFormData({
+        ...formData,
+        furnitureType: [...formData.furnitureType, value],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        furnitureType: formData.furnitureType.filter((item) => item !== value),
+      });
+    }
+  };
+
+  // Обработка обычного ввода
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Обработка следующего шага
+  // Переход на следующий вопрос только при заполнении текущего
   const nextStep = () => {
+    if ((step === 1 && formData.furnitureType.length === 0) ||
+        (step === 2 && !formData.installationTime) ||
+        (step === 3 && !formData.designPreference) ||
+        (step === 4 && !formData.budget) ||
+        (step === 5 && !formData.name) ||
+        (step === 6 && !formData.phone)) {
+      alert('Пожалуйста, ответьте на текущий вопрос перед переходом!');
+      return;
+    }
     setStep(step + 1);
   };
 
   // Обработка отправки формы
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // Здесь ты можешь добавить логику для отправки данных на сервер
+    console.log(formData);
     alert('Спасибо! Ваши данные отправлены.');
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto' }}>
       <h1>Опрос по корпусной мебели</h1>
       {step === 1 && (
         <div>
           <h2>1. Какой тип мебели вас интересует?</h2>
-          <select name="furnitureType" onChange={handleChange}>
-            <option value="">Выберите...</option>
-            <option value="Кухонная мебель">Кухонная мебель</option>
-            <option value="Гардеробная мебель">Гардеробная мебель</option>
-            <option value="Офисная мебель">Офисная мебель</option>
-            <option value="Спальная мебель">Спальная мебель</option>
-          </select>
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                name="furnitureType"
+                value="Кухонная мебель"
+                onChange={handleCheckboxChange}
+              />
+              Кухонная мебель
+            </label>
+            <br />
+            <label>
+              <input
+                type="checkbox"
+                name="furnitureType"
+                value="Гардеробная мебель"
+                onChange={handleCheckboxChange}
+              />
+              Гардеробная мебель
+            </label>
+            <br />
+            <label>
+              <input
+                type="checkbox"
+                name="furnitureType"
+                value="Офисная мебель"
+                onChange={handleCheckboxChange}
+              />
+              Офисная мебель
+            </label>
+            <br />
+            <label>
+              <input
+                type="checkbox"
+                name="furnitureType"
+                value="Спальная мебель"
+                onChange={handleCheckboxChange}
+              />
+              Спальная мебель
+            </label>
+          </div>
           <button onClick={nextStep} style={{ marginTop: '20px' }}>Далее</button>
         </div>
       )}
@@ -48,12 +107,37 @@ function App() {
       {step === 2 && (
         <div>
           <h2>2. Когда планируете установить?</h2>
-          <select name="installationTime" onChange={handleChange}>
-            <option value="">Выберите...</option>
-            <option value="В течение недели">В течение недели</option>
-            <option value="В течение месяца">В течение месяца</option>
-            <option value="Позже">Позже</option>
-          </select>
+          <div>
+            <label>
+              <input
+                type="radio"
+                name="installationTime"
+                value="В течение недели"
+                onChange={handleChange}
+              />
+              В течение недели
+            </label>
+            <br />
+            <label>
+              <input
+                type="radio"
+                name="installationTime"
+                value="В течение месяца"
+                onChange={handleChange}
+              />
+              В течение месяца
+            </label>
+            <br />
+            <label>
+              <input
+                type="radio"
+                name="installationTime"
+                value="Позже"
+                onChange={handleChange}
+              />
+              Позже
+            </label>
+          </div>
           <button onClick={nextStep} style={{ marginTop: '20px' }}>Далее</button>
         </div>
       )}
@@ -64,7 +148,7 @@ function App() {
           <input
             type="text"
             name="designPreference"
-            placeholder="Введите стиль (классика, модерн, минимализм)"
+            placeholder="Введите стиль (например, классика, модерн)"
             onChange={handleChange}
           />
           <button onClick={nextStep} style={{ marginTop: '20px' }}>Далее</button>
