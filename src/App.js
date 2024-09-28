@@ -136,7 +136,33 @@ function App() {
         </div>
       )}
 
-      {/* Оставшиеся вопросы с аналогичными изменениями... */}
+      {step === 2 && (
+        <div className="question-box">
+          <h2>Тип мебели:</h2>
+          <p>Какая мебель вам нужна? Мы учтем все ваши пожелания!</p>
+          <div className="options">
+            <label>
+              <input
+                type="checkbox"
+                name="furnitureType"
+                value="Кухонная мебель"
+                onChange={handleCheckboxChange}
+              />
+              Кухонная мебель
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="furnitureType"
+                value="Гардеробная мебель"
+                onChange={handleCheckboxChange}
+              />
+              Гардеробная мебель
+            </label>
+          </div>
+          <button className="next-btn" onClick={nextStep}>Далее</button>
+        </div>
+      )}
 
       {step === 6 && (
         <div className="question-box">
